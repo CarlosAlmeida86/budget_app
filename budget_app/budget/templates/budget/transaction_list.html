@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Transações</title>
+</head>
+<body>
+    <h1>Lista de Transações</h1>
+
+    <table>
+        <tr>
+            <th>Título</th>
+            <th>Valor</th>
+            <th>Categoria</th>
+            <th>Data</th>
+        </tr>
+        {% for transaction in transactions %}
+        <tr>
+            <td>{{ transaction.title }}</td>
+            <td>{{ transaction.amount }}</td>
+            <td>{{ transaction.get_category_display }}</td>
+            <td>{{ transaction.format_date }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{% url 'add_transaction' %}">Adicionar Transação</a>
+    <style type="text/css">
+        table{
+        background-color: gray;
+        }
+        body {
+        background-color: lightblue;
+        }
+        h1{
+        color: red;
+        text-align: center;
+        }
+        td {
+        font-family: verdana;
+        font-size: 20px;
+        }
+    </style>
+</body>
+</html>
